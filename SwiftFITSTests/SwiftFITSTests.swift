@@ -20,8 +20,18 @@ class SwiftFITSTests: XCTestCase {
     }
 
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let url = Bundle(for: SwiftFITSTests.self).url(forResource: "Sadr_Light_052", withExtension: "fits")
+        do {
+            var fits = try FITS(atURL: url!)
+            let header = fits.primaryHeader
+            for record in header.keywordRecords {
+                print(record)
+            }
+            let data = fits.primaryDataArray
+            print("data loaded: ")
+        } catch {
+            print("URL: \(url) does not exist.")
+        }
     }
 
     func testPerformanceExample() {

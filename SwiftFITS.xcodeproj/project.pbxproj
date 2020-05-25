@@ -7,12 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		022B545C24757C2300162BA7 /* Sadr_Light_052.fits in Resources */ = {isa = PBXBuildFile; fileRef = 022B545B24757C2300162BA7 /* Sadr_Light_052.fits */; };
+		022B5464247BE96B00162BA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022B5463247BE96B00162BA7 /* AppDelegate.swift */; };
+		022B5466247BE97000162BA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 022B5465247BE97000162BA7 /* Assets.xcassets */; };
+		022B5469247BE97000162BA7 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 022B5467247BE97000162BA7 /* MainMenu.xib */; };
+		022B5470247BE9ED00162BA7 /* SwiftFITS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0283F41223D6049E00E091A7 /* SwiftFITS.framework */; };
+		022B5471247BE9ED00162BA7 /* SwiftFITS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0283F41223D6049E00E091A7 /* SwiftFITS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		027619A723E250BB00DB0F9B /* 502nmos.fits in Resources */ = {isa = PBXBuildFile; fileRef = 027619A623E250BB00DB0F9B /* 502nmos.fits */; };
 		0283F41C23D6049E00E091A7 /* SwiftFITS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0283F41223D6049E00E091A7 /* SwiftFITS.framework */; };
 		0283F42123D6049E00E091A7 /* SwiftFITSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0283F42023D6049E00E091A7 /* SwiftFITSTests.swift */; };
 		0283F42323D6049E00E091A7 /* SwiftFITS.h in Headers */ = {isa = PBXBuildFile; fileRef = 0283F41523D6049E00E091A7 /* SwiftFITS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0283F42E23D604E200E091A7 /* FITS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0283F42D23D604E200E091A7 /* FITS.swift */; };
+		0283F43123D6081500E091A7 /* WFPC2ASSNu5780205bx.fits in Resources */ = {isa = PBXBuildFile; fileRef = 0283F43023D6081500E091A7 /* WFPC2ASSNu5780205bx.fits */; };
+		0283F43323D6131000E091A7 /* FOCx38i0101t_c0f.fits in Resources */ = {isa = PBXBuildFile; fileRef = 0283F43223D6131000E091A7 /* FOCx38i0101t_c0f.fits */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		022B5472247BE9ED00162BA7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0283F40923D6049D00E091A7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0283F41123D6049E00E091A7;
+			remoteInfo = SwiftFITS;
+		};
 		0283F41D23D6049E00E091A7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0283F40923D6049D00E091A7 /* Project object */;
@@ -22,16 +39,49 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		022B5474247BE9ED00162BA7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				022B5471247BE9ED00162BA7 /* SwiftFITS.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		022B545B24757C2300162BA7 /* Sadr_Light_052.fits */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Sadr_Light_052.fits; sourceTree = "<group>"; };
+		022B5461247BE96B00162BA7 /* FITS Viewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FITS Viewer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		022B5463247BE96B00162BA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		022B5465247BE97000162BA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		022B5468247BE97000162BA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		022B546A247BE97000162BA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		022B546B247BE97000162BA7 /* FITS_Viewer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FITS_Viewer.entitlements; sourceTree = "<group>"; };
+		027619A623E250BB00DB0F9B /* 502nmos.fits */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 502nmos.fits; sourceTree = "<group>"; };
 		0283F41223D6049E00E091A7 /* SwiftFITS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftFITS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0283F41523D6049E00E091A7 /* SwiftFITS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftFITS.h; sourceTree = "<group>"; };
 		0283F41623D6049E00E091A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0283F41B23D6049E00E091A7 /* SwiftFITSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftFITSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0283F42023D6049E00E091A7 /* SwiftFITSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftFITSTests.swift; sourceTree = "<group>"; };
 		0283F42223D6049E00E091A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0283F42D23D604E200E091A7 /* FITS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FITS.swift; sourceTree = "<group>"; };
+		0283F43023D6081500E091A7 /* WFPC2ASSNu5780205bx.fits */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WFPC2ASSNu5780205bx.fits; sourceTree = "<group>"; };
+		0283F43223D6131000E091A7 /* FOCx38i0101t_c0f.fits */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FOCx38i0101t_c0f.fits; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		022B545E247BE96B00162BA7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				022B5470247BE9ED00162BA7 /* SwiftFITS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0283F40F23D6049E00E091A7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -50,12 +100,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		022B5462247BE96B00162BA7 /* FITS Viewer */ = {
+			isa = PBXGroup;
+			children = (
+				022B5463247BE96B00162BA7 /* AppDelegate.swift */,
+				022B5465247BE97000162BA7 /* Assets.xcassets */,
+				022B5467247BE97000162BA7 /* MainMenu.xib */,
+				022B546A247BE97000162BA7 /* Info.plist */,
+				022B546B247BE97000162BA7 /* FITS_Viewer.entitlements */,
+			);
+			path = "FITS Viewer";
+			sourceTree = "<group>";
+		};
+		022B546F247BE9ED00162BA7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		0283F40823D6049D00E091A7 = {
 			isa = PBXGroup;
 			children = (
 				0283F41423D6049E00E091A7 /* SwiftFITS */,
 				0283F41F23D6049E00E091A7 /* SwiftFITSTests */,
+				022B5462247BE96B00162BA7 /* FITS Viewer */,
 				0283F41323D6049E00E091A7 /* Products */,
+				022B546F247BE9ED00162BA7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +135,7 @@
 			children = (
 				0283F41223D6049E00E091A7 /* SwiftFITS.framework */,
 				0283F41B23D6049E00E091A7 /* SwiftFITSTests.xctest */,
+				022B5461247BE96B00162BA7 /* FITS Viewer.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -71,6 +143,7 @@
 		0283F41423D6049E00E091A7 /* SwiftFITS */ = {
 			isa = PBXGroup;
 			children = (
+				0283F42C23D604B000E091A7 /* model */,
 				0283F41523D6049E00E091A7 /* SwiftFITS.h */,
 				0283F41623D6049E00E091A7 /* Info.plist */,
 			);
@@ -80,10 +153,30 @@
 		0283F41F23D6049E00E091A7 /* SwiftFITSTests */ = {
 			isa = PBXGroup;
 			children = (
+				0283F42F23D6081500E091A7 /* test-files */,
 				0283F42023D6049E00E091A7 /* SwiftFITSTests.swift */,
 				0283F42223D6049E00E091A7 /* Info.plist */,
 			);
 			path = SwiftFITSTests;
+			sourceTree = "<group>";
+		};
+		0283F42C23D604B000E091A7 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				0283F42D23D604E200E091A7 /* FITS.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		0283F42F23D6081500E091A7 /* test-files */ = {
+			isa = PBXGroup;
+			children = (
+				022B545B24757C2300162BA7 /* Sadr_Light_052.fits */,
+				027619A623E250BB00DB0F9B /* 502nmos.fits */,
+				0283F43223D6131000E091A7 /* FOCx38i0101t_c0f.fits */,
+				0283F43023D6081500E091A7 /* WFPC2ASSNu5780205bx.fits */,
+			);
+			path = "test-files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -100,6 +193,25 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		022B5460247BE96B00162BA7 /* FITS Viewer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 022B546C247BE97000162BA7 /* Build configuration list for PBXNativeTarget "FITS Viewer" */;
+			buildPhases = (
+				022B545D247BE96B00162BA7 /* Sources */,
+				022B545E247BE96B00162BA7 /* Frameworks */,
+				022B545F247BE96B00162BA7 /* Resources */,
+				022B5474247BE9ED00162BA7 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				022B5473247BE9ED00162BA7 /* PBXTargetDependency */,
+			);
+			name = "FITS Viewer";
+			productName = "FITS Viewer";
+			productReference = 022B5461247BE96B00162BA7 /* FITS Viewer.app */;
+			productType = "com.apple.product-type.application";
+		};
 		0283F41123D6049E00E091A7 /* SwiftFITS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0283F42623D6049E00E091A7 /* Build configuration list for PBXNativeTarget "SwiftFITS" */;
@@ -142,12 +254,16 @@
 		0283F40923D6049D00E091A7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1130;
+				LastSwiftUpdateCheck = 1140;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = lapsedpacifist;
 				TargetAttributes = {
+					022B5460247BE96B00162BA7 = {
+						CreatedOnToolsVersion = 11.4.1;
+					};
 					0283F41123D6049E00E091A7 = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
 					};
 					0283F41A23D6049E00E091A7 = {
 						CreatedOnToolsVersion = 11.3.1;
@@ -169,11 +285,21 @@
 			targets = (
 				0283F41123D6049E00E091A7 /* SwiftFITS */,
 				0283F41A23D6049E00E091A7 /* SwiftFITSTests */,
+				022B5460247BE96B00162BA7 /* FITS Viewer */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		022B545F247BE96B00162BA7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				022B5466247BE97000162BA7 /* Assets.xcassets in Resources */,
+				022B5469247BE97000162BA7 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0283F41023D6049E00E091A7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -185,16 +311,29 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0283F43123D6081500E091A7 /* WFPC2ASSNu5780205bx.fits in Resources */,
+				027619A723E250BB00DB0F9B /* 502nmos.fits in Resources */,
+				022B545C24757C2300162BA7 /* Sadr_Light_052.fits in Resources */,
+				0283F43323D6131000E091A7 /* FOCx38i0101t_c0f.fits in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		022B545D247BE96B00162BA7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				022B5464247BE96B00162BA7 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0283F40E23D6049E00E091A7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0283F42E23D604E200E091A7 /* FITS.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,6 +348,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		022B5473247BE9ED00162BA7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0283F41123D6049E00E091A7 /* SwiftFITS */;
+			targetProxy = 022B5472247BE9ED00162BA7 /* PBXContainerItemProxy */;
+		};
 		0283F41E23D6049E00E091A7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0283F41123D6049E00E091A7 /* SwiftFITS */;
@@ -216,7 +360,58 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		022B5467247BE97000162BA7 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				022B5468247BE97000162BA7 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		022B546D247BE97000162BA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "FITS Viewer/FITS_Viewer.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = J2S9726G2L;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = "FITS Viewer/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lapsedpacifist.FITS-Viewer";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		022B546E247BE97000162BA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "FITS Viewer/FITS_Viewer.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = J2S9726G2L;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = "FITS Viewer/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lapsedpacifist.FITS-Viewer";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		0283F42423D6049E00E091A7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -339,6 +534,7 @@
 		0283F42723D6049E00E091A7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -356,6 +552,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lapsedpacifist.SwiftFITS;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -363,6 +560,7 @@
 		0283F42823D6049E00E091A7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -387,6 +585,7 @@
 		0283F42A23D6049E00E091A7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = J2S9726G2L;
@@ -405,6 +604,7 @@
 		0283F42B23D6049E00E091A7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = J2S9726G2L;
@@ -423,6 +623,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		022B546C247BE97000162BA7 /* Build configuration list for PBXNativeTarget "FITS Viewer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				022B546D247BE97000162BA7 /* Debug */,
+				022B546E247BE97000162BA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		0283F40C23D6049D00E091A7 /* Build configuration list for PBXProject "SwiftFITS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
