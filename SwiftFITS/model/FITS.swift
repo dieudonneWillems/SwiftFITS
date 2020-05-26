@@ -69,12 +69,13 @@ public struct FITS {
             }
             index = index + 1
         }
-        self.primaryDataBlockIndex = index
+        self.primaryDataBlockIndex = index - 1
         return header
     }
     
     private mutating func readPrimaryDataArray() -> FITSData? {
         let bitpixs = primaryHeader.records(forKeyword: "BITPIX")
+        let byteZeros = primaryHeader.records(forKeyword: "BZERO")
         let naxiss = primaryHeader.records(forKeyword: "NAXIS")
         if bitpixs.count == 1 && naxiss.count >= 1 && bitpixs[0].intValue != nil && naxiss[0].intValue != nil {
             var dataSize = abs(bitpixs[0].intValue!)
@@ -98,7 +99,11 @@ public struct FITS {
                     return nil
                 }
             }
-            let fitsData = FITSData(bitPix: bitpixs[0].intValue!, naxis: naxiss, data: data)
+            var byteZero = 0
+            if byteZeros.count > 0 {
+                byteZero = byteZeros[0].intValue!
+            }
+            let fitsData = FITSData(bitPix: bitpixs[0].intValue!, byteZero: byteZero, naxis: naxiss, data: data)
             return fitsData
         }
         // TODO: Throw error
@@ -114,6 +119,20 @@ public struct FITS {
         }
         let data = self.fileHandle.readData(ofLength: FITSBlock.blockSize)
         let block = FITSBlock(forIndex: index, withData: data)
+        /* // Print first and last bytes of a block
+        if block.data.count > 0 {
+            for i in 0...10 {
+                let u = UnicodeScalar(block.byte(at: i)!)
+                let char = String(u)
+                print("[\(index)] start \(i): \(block.byte(at: i)!) = \(char)")
+            }
+            for i in FITSBlock.blockSize-11...FITSBlock.blockSize-1 {
+                let u = UnicodeScalar(block.byte(at: i)!)
+                let char = String(u)
+                print("[\(index)] end \(i): \(block.byte(at: i)!) = \(char)")
+            }
+        }
+         */
         return block
     }
 }
@@ -245,7 +264,11 @@ public struct KeywordRecord : CustomStringConvertible{
                 qend = stringValue!.index(qend, offsetBy: -1)
                 char = String(stringValue![qend])
             }
-            stringValue = String(stringValue![qstart...qend])
+            if qstart < qend {
+                stringValue = String(stringValue![qstart...qend])
+            } else {
+                stringValue = ""
+            }
         } else {
             if stringValue!.count > 0 {
                 if stringValue! == "F" {
@@ -308,8 +331,9 @@ public struct FITSData {
     public let numberOfAxes : Int
     public let lengthOfDataAxis : [Int]
     private var multipliers : [Int]
+    private let byteZero : Int
     
-    fileprivate init?(bitPix: Int, naxis: [KeywordRecord], data: Data) {
+    fileprivate init?(bitPix: Int, byteZero: Int,  naxis: [KeywordRecord], data: Data) {
         if naxis.count > 0 && naxis[0].intValue != nil{
             let numberOfAxes = naxis[0].intValue!
             if numberOfAxes >= naxis.count {
@@ -321,19 +345,21 @@ public struct FITSData {
                 let axisLength = naxis[index + 1].intValue!
                 lengths.append(axisLength)
             }
-            self.init(bitPix: bitPix, numberOfAxes: numberOfAxes, lengthOfDataAxis: lengths, data: data)
+            self.init(bitPix: bitPix, byteZero: byteZero, numberOfAxes: numberOfAxes, lengthOfDataAxis: lengths, data: data)
             return
         }
         // TODO Throw error
         return nil
     }
     
-    fileprivate init(bitPix: Int, numberOfAxes: Int, lengthOfDataAxis: [Int], data: Data) {
+    fileprivate init(bitPix: Int, byteZero: Int, numberOfAxes: Int, lengthOfDataAxis: [Int], data: Data) {
         self.isFloatingPoint = bitPix > 0 ? false : true
         self.bitsPerPixel = abs(bitPix)
+        self.byteZero = byteZero
         self.numberOfAxes = numberOfAxes
         self.lengthOfDataAxis = lengthOfDataAxis
-        self.data = data
+        // swap bytes from big endian
+        self.data = FITSData.swapInt16Data(data: data, byteZero: self.byteZero)
         self.multipliers = [Int]()
         var multiplier = bitsPerPixel
         self.multipliers.append(multiplier)
@@ -341,6 +367,30 @@ public struct FITSData {
             multiplier = multiplier * lengthOfDataAxis[index]
             self.multipliers.insert(multiplier, at: 0)
         }
+    }
+    
+    private static func swapInt16Data(data : Data, byteZero: Int) -> Data {
+        var mdata = data // make a mutable copy
+        let count = data.count / MemoryLayout<Int16>.size
+        var min = UInt16.max
+        var max = UInt16.min
+        var newBytes : [UInt16] = [UInt16](repeating: UInt16(0), count: data.count)
+        mdata.withUnsafeMutableBytes { (i16ptr: UnsafeMutablePointer<Int16>) in
+            for i in 0..<count {
+                //print("big endian byte[\(i)] = \(i16ptr[i])")
+                let be = Int16(bigEndian: i16ptr[i])
+                newBytes[i] = UInt16(Int(be) + byteZero)
+                if newBytes[i] < min {
+                    min = newBytes[i]
+                }
+                if newBytes[i] > max {
+                    max = newBytes[i]
+                }
+              //  print("byte[\(i)] = \(newBytes[i])   [\(min),\(max)]")
+            }
+            print("--> Range  [\(min),\(max)]")
+        }
+        return Data(bytes: newBytes, count: data.count)
     }
     
     public func pixelIntValue(at index: [Int]) -> Int? {
@@ -398,7 +448,16 @@ public struct FITSData {
                 let bytes = self.data.bytes
                 let cfdata = CFDataCreate(nil, bytes, data.count)
                 let provider = CGDataProvider(data: cfdata!);
-                cgImage = CGImage(width: lengthOfDataAxis[0], height: lengthOfDataAxis[1], bitsPerComponent: self.bitsPerPixel, bitsPerPixel: self.bitsPerPixel, bytesPerRow: lengthOfDataAxis[1]*self.bitsPerPixel/8, space: colorspace, bitmapInfo: [], provider: provider!, decode: nil, shouldInterpolate: true, intent: CGColorRenderingIntent.defaultIntent);
+                var bitmapInfo : CGBitmapInfo = []
+                switch self.bitsPerPixel {
+                case 16:
+                    bitmapInfo = [.byteOrderMask,.byteOrder16Big]
+                case 32:
+                    bitmapInfo = [.byteOrderMask,.byteOrder32Little]
+                default:
+                    break
+                }
+                cgImage = CGImage(width: lengthOfDataAxis[0], height: lengthOfDataAxis[1], bitsPerComponent: self.bitsPerPixel, bitsPerPixel: self.bitsPerPixel, bytesPerRow: lengthOfDataAxis[0]*self.bitsPerPixel/8, space: colorspace, bitmapInfo: bitmapInfo, provider: provider!, decode: nil, shouldInterpolate: false, intent: CGColorRenderingIntent.defaultIntent);
                 return cgImage
             }
             return nil

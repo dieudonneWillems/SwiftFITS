@@ -13,6 +13,9 @@
 		022B5469247BE97000162BA7 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 022B5467247BE97000162BA7 /* MainMenu.xib */; };
 		022B5470247BE9ED00162BA7 /* SwiftFITS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0283F41223D6049E00E091A7 /* SwiftFITS.framework */; };
 		022B5471247BE9ED00162BA7 /* SwiftFITS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0283F41223D6049E00E091A7 /* SwiftFITS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		022B5477247C066400162BA7 /* CelestialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022B5476247C066400162BA7 /* CelestialView.swift */; };
+		022B5479247C068900162BA7 /* CelestialViewLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022B5478247C068900162BA7 /* CelestialViewLayer.swift */; };
+		022B547B247C0BC200162BA7 /* FITSImageLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022B547A247C0BC200162BA7 /* FITSImageLayer.swift */; };
 		027619A723E250BB00DB0F9B /* 502nmos.fits in Resources */ = {isa = PBXBuildFile; fileRef = 027619A623E250BB00DB0F9B /* 502nmos.fits */; };
 		0283F41C23D6049E00E091A7 /* SwiftFITS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0283F41223D6049E00E091A7 /* SwiftFITS.framework */; };
 		0283F42123D6049E00E091A7 /* SwiftFITSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0283F42023D6049E00E091A7 /* SwiftFITSTests.swift */; };
@@ -61,6 +64,9 @@
 		022B5468247BE97000162BA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		022B546A247BE97000162BA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		022B546B247BE97000162BA7 /* FITS_Viewer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FITS_Viewer.entitlements; sourceTree = "<group>"; };
+		022B5476247C066400162BA7 /* CelestialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelestialView.swift; sourceTree = "<group>"; };
+		022B5478247C068900162BA7 /* CelestialViewLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelestialViewLayer.swift; sourceTree = "<group>"; };
+		022B547A247C0BC200162BA7 /* FITSImageLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FITSImageLayer.swift; sourceTree = "<group>"; };
 		027619A623E250BB00DB0F9B /* 502nmos.fits */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 502nmos.fits; sourceTree = "<group>"; };
 		0283F41223D6049E00E091A7 /* SwiftFITS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftFITS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0283F41523D6049E00E091A7 /* SwiftFITS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftFITS.h; sourceTree = "<group>"; };
@@ -119,6 +125,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		022B5475247C052900162BA7 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				022B5476247C066400162BA7 /* CelestialView.swift */,
+				022B5478247C068900162BA7 /* CelestialViewLayer.swift */,
+				022B547A247C0BC200162BA7 /* FITSImageLayer.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		0283F40823D6049D00E091A7 = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +159,7 @@
 		0283F41423D6049E00E091A7 /* SwiftFITS */ = {
 			isa = PBXGroup;
 			children = (
+				022B5475247C052900162BA7 /* view */,
 				0283F42C23D604B000E091A7 /* model */,
 				0283F41523D6049E00E091A7 /* SwiftFITS.h */,
 				0283F41623D6049E00E091A7 /* Info.plist */,
@@ -334,6 +351,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0283F42E23D604E200E091A7 /* FITS.swift in Sources */,
+				022B547B247C0BC200162BA7 /* FITSImageLayer.swift in Sources */,
+				022B5479247C068900162BA7 /* CelestialViewLayer.swift in Sources */,
+				022B5477247C066400162BA7 /* CelestialView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

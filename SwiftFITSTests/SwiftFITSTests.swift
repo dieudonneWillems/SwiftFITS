@@ -22,12 +22,14 @@ class SwiftFITSTests: XCTestCase {
     func testExample() {
         let url = Bundle(for: SwiftFITSTests.self).url(forResource: "Sadr_Light_052", withExtension: "fits")
         do {
+            print("URL: \(url) exists.")
             var fits = try FITS(atURL: url!)
             let header = fits.primaryHeader
             for record in header.keywordRecords {
                 print(record)
             }
             let data = fits.primaryDataArray
+            let image = data?.image
             print("data loaded: ")
         } catch {
             print("URL: \(url) does not exist.")

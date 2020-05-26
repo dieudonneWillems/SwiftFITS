@@ -7,15 +7,27 @@
 //
 
 import Cocoa
+import SwiftFITS
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
-
+    @IBOutlet weak var celestialView: CelestialView!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        let url = URL(fileURLWithPath: "/Users/wonco/Downloads/Sadr_Light_052-stretched.fits")
+        do {
+            var fits = try FITS(atURL: url)
+            let header = fits.primaryHeader
+            for record in header.keywordRecords {
+                print(record)
+            }
+            let fitsLayer = FITSImageLayer(with: fits)
+            celestialView.add(layer: fitsLayer)
+        } catch {
+            print("URL: \(url) does not exist: \(error)")
+        }
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
