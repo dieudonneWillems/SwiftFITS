@@ -16,7 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var celestialView: CelestialView!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        let url = URL(fileURLWithPath: "/Users/wonco/Downloads/Sadr_Light_052-stretched.fits")
+        let url = URL(fileURLWithPath: "/Users/wonco/Downloads/M13_Light_016.fits")
         do {
             var fits = try FITS(atURL: url)
             let header = fits.primaryHeader
