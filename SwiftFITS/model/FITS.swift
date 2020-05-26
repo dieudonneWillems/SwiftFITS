@@ -85,18 +85,15 @@ public struct FITS {
                 let length = naxiss[index + 1].intValue
                 if length != nil {
                     dataSize = dataSize * length!
-                    let nblocks = 1 + dataSize / FITSBlock.blockSize
-                    for blockIndex in 0..<nblocks {
-                        let block = readBlock(atIndex: blockIndex + self.primaryDataBlockIndex!)
-                        if block == nil {
-                            // TODO: Throw error
-                        } else {
-                            data.append(block!.data)
-                        }
-                    }
-                } else {
+                }
+            }
+            let nblocks = 1 + dataSize / FITSBlock.blockSize
+            for blockIndex in 0..<nblocks {
+                let block = readBlock(atIndex: blockIndex + self.primaryDataBlockIndex!)
+                if block == nil {
                     // TODO: Throw error
-                    return nil
+                } else {
+                    data.append(block!.data)
                 }
             }
             var byteZero = 0
